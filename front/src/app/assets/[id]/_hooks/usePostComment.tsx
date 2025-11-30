@@ -1,5 +1,6 @@
 import clientFetch from "@/lib/client-side-fetching";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
 
 async function postComment({
   comment,
@@ -20,6 +21,12 @@ export default function usePostComment({ assetId }: { assetId: number }) {
   return useMutation({
     mutationFn: ({ comment }: { comment: string }) =>
       postComment({ comment, assetId }),
+    onSuccess: () => {
+      toast.success("Comment posted");
+    },
+    onError: () => {
+      toast.error("Failed to post comment");
+    },
     onSettled: async () => {
       await queryClient.invalidateQueries({
         queryKey: ["comments", { assetId }],

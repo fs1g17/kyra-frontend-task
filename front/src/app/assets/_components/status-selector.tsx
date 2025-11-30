@@ -1,38 +1,14 @@
 import { cn } from "@/lib/utils";
 import { AssetStatus, ASSET_STATUSES } from "@/types/asset";
+import { ASSET_STATUS_CONFIG } from "@/constants/asset-status";
 import { useMemo } from "react";
-
-export const AssetStatusMap: {
-  [key: string]: { name: string; style: string };
-} = {
-  AWAITING_ASSET: {
-    name: "Awaiting asset",
-    style: "bg-[#8397AD]",
-  },
-  PENDING_ADMIN_REVIEW: {
-    name: "Needs admin review",
-    style: "bg-[#BA842E]",
-  },
-  PENDING_BRAND_REVIEW: {
-    name: "In brand review",
-    style: "bg-[#9A82B0]",
-  },
-  REJECTED: {
-    name: "Rejected (awaiting edits)",
-    style: "bg-[#BB5264]",
-  },
-  APPROVED: {
-    name: "Approved",
-    style: "bg-[#83A18A]",
-  },
-};
 
 export default function StatusSelector({
   count,
   selectedStatus,
   setSelectedStatus,
 }: {
-  count: { [key: string]: number };
+  count: Record<AssetStatus, number>;
   selectedStatus: AssetStatus | null;
   setSelectedStatus: (status: AssetStatus | null) => void;
 }) {
@@ -41,7 +17,7 @@ export default function StatusSelector({
   }, [count]);
 
   return (
-    <div className="w-full flex overflow-x-auto bg-[#1A1A1A] rounded-md p-1">
+    <div className="w-full flex overflow-x-auto bg-surface-elevated rounded-md p-1">
       <StatusButton
         amount={total}
         selected={selectedStatus === null}
@@ -51,10 +27,11 @@ export default function StatusSelector({
 
       {ASSET_STATUSES.map((status) => (
         <StatusButton
+          key={status}
           amount={count[status]}
           selected={selectedStatus === status}
-          name={AssetStatusMap[status].name}
-          highlight={AssetStatusMap[status].style}
+          name={ASSET_STATUS_CONFIG[status].name}
+          highlight={ASSET_STATUS_CONFIG[status].selectorStyle}
           onSelect={() => setSelectedStatus(status)}
         />
       ))}
@@ -76,16 +53,17 @@ function StatusButton({
   onSelect: () => void;
 }) {
   return (
-    <div
+    <button
+      type="button"
       className={cn(
-        "flex gap-x-2.5 px-2 py-1 items-center shrink-0 rounded-md hover:cursor-pointer",
-        selected ? "bg-[#35343C]" : "bg-[#1A1A1A]"
+        "flex gap-x-2.5 px-2 py-1 items-center shrink-0 rounded-md",
+        selected ? "bg-surface-active" : "bg-surface-elevated"
       )}
       onClick={onSelect}
     >
-      {highlight && <div className={cn("w-3 h-3", highlight)} />}
+      {highlight && <span className={cn("w-3 h-3 rounded-sm", highlight)} />}
       {name}
-      <div>{amount}</div>
-    </div>
+      <span>{amount}</span>
+    </button>
   );
 }
