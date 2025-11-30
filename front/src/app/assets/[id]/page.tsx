@@ -4,8 +4,6 @@ import useGetAsset from "./_hooks/useGetAsset";
 import Navbar from "./_components/navbar";
 import VideoCard from "./_components/video-card";
 import ThumbnailCard from "./_components/thumbnail-card";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
 import SoundUsedInput from "./_components/sound-used-input";
 import CreatorsCaptionInput from "./_components/creators-caption-input";
 
@@ -30,9 +28,9 @@ export default function AssetPage({
     <div className="flex flex-col h-[100vh] bg-[#111013]">
       <Navbar />
       <div className="flex gap-4 h-full">
-        <div className="w-full md:w-2/3">
+        <div className="w-full md:w-2/3 p-2">
           <div className="flex flex-col gap-y-2.5">
-            <div className="flex gap-x-2.5">
+            <div className="flex gap-x-2.5 justify-center">
               <VideoCard videoUrl={data.assetUrl} />
               <ThumbnailCard thumbnailUrl={data.thumbnailUrl} />
             </div>
