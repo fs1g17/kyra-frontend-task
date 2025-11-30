@@ -18,14 +18,23 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useState } from "react";
+import usePatchAsset from "../_hooks/usePatchAsset";
 
 export default function EditStatusDialog({ asset }: { asset: Asset }) {
   const [status, setStatus] = useState<AssetStatus>(asset.status);
+  const { mutateAsync } = usePatchAsset({ id: asset.id });
+
+  const onSave = async () => {
+    await mutateAsync({ status });
+  };
 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-gradient-to-r from-violet-800 to-pink-400">
+        <Button
+          disabled={asset.status !== "PENDING_ADMIN_REVIEW"}
+          className="bg-gradient-to-r from-violet-800 to-pink-400"
+        >
           Edit Status
         </Button>
       </DialogTrigger>
@@ -59,7 +68,11 @@ export default function EditStatusDialog({ asset }: { asset: Asset }) {
           <DialogClose asChild>
             <Button variant="outline">Cancel</Button>
           </DialogClose>
-          <Button type="submit" disabled={status === asset.status}>
+          <Button
+            type="submit"
+            disabled={status === asset.status}
+            onClick={onSave}
+          >
             Save changes
           </Button>
         </DialogFooter>
