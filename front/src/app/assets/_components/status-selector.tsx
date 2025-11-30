@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { AssetStatus, ASSET_STATUSES } from "@/types/asset";
+import { useMemo } from "react";
 
 export const AssetStatusMap: {
   [key: string]: { name: string; style: string };
@@ -27,16 +28,22 @@ export const AssetStatusMap: {
 };
 
 export default function StatusSelector({
+  count,
   selectedStatus,
   setSelectedStatus,
 }: {
+  count: { [key: string]: number };
   selectedStatus: AssetStatus | null;
   setSelectedStatus: (status: AssetStatus | null) => void;
 }) {
+  const total = useMemo(() => {
+    return Object.values(count).reduce((prev, curr) => prev + curr, 0);
+  }, [count]);
+
   return (
     <div className="w-full flex overflow-x-auto bg-[#1A1A1A] rounded-md p-1">
       <StatusButton
-        amount={0}
+        amount={total}
         selected={selectedStatus === null}
         name="All"
         onSelect={() => setSelectedStatus(null)}
@@ -44,7 +51,7 @@ export default function StatusSelector({
 
       {ASSET_STATUSES.map((status) => (
         <StatusButton
-          amount={0}
+          amount={count[status]}
           selected={selectedStatus === status}
           name={AssetStatusMap[status].name}
           highlight={AssetStatusMap[status].style}
