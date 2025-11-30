@@ -1,10 +1,12 @@
 "use client";
 
-import { useMemo } from "react";
 import useGetAsset from "./_hooks/useGetAsset";
 import Navbar from "./_components/navbar";
 import VideoCard from "./_components/video-card";
 import ThumbnailCard from "./_components/thumbnail-card";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import SoundUsedInput from "./_components/sound-used-input";
 
 export default function AssetPage({
   params,
@@ -28,11 +30,12 @@ export default function AssetPage({
       <Navbar />
       <div className="flex gap-4 h-full">
         <div className="w-full md:w-2/3">
-          <div className="flex flex-col">
+          <div className="flex flex-col gap-y-2.5">
             <div className="flex gap-x-2.5">
               <VideoCard videoUrl={data.assetUrl} />
               <ThumbnailCard thumbnailUrl={data.thumbnailUrl} />
             </div>
+            <SoundUsedInput soundUrl={data.soundUrl} />
           </div>
         </div>
 
