@@ -2,6 +2,19 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
     darkMode: ["class"],
+    safelist: [
+      // Status chip styles - must be safelisted as they're in a constants file
+      "bg-[#8397AD]",
+      "bg-[#442A00]",
+      "bg-[#9A82B0]",
+      "bg-[#BB5264]",
+      "bg-[#BAEF44]",
+      "bg-[#BA842E]",
+      "bg-[#83A18A]",
+      "border-[#7B6548]",
+      "text-[#F4A930]",
+      "text-black",
+    ],
     content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -34,7 +47,8 @@ const config: Config = {
   			},
   			accent: {
   				DEFAULT: 'hsl(var(--accent))',
-  				foreground: 'hsl(var(--accent-foreground))'
+  				foreground: 'hsl(var(--accent-foreground))',
+  				lime: 'hsl(var(--accent-lime))'
   			},
   			destructive: {
   				DEFAULT: 'hsl(var(--destructive))',
@@ -49,6 +63,12 @@ const config: Config = {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
+  			},
+  			surface: {
+  				dark: 'hsl(var(--surface-dark))',
+  				elevated: 'hsl(var(--surface-elevated))',
+  				active: 'hsl(var(--surface-active))',
+  				input: 'hsl(var(--surface-input))'
   			}
   		},
   		borderRadius: {

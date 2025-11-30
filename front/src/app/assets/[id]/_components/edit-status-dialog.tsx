@@ -21,15 +21,17 @@ import { useState } from "react";
 import usePatchAsset from "../_hooks/usePatchAsset";
 
 export default function EditStatusDialog({ asset }: { asset: Asset }) {
+  const [open, setOpen] = useState(false);
   const [status, setStatus] = useState<AssetStatus>(asset.status);
   const { mutateAsync } = usePatchAsset({ id: asset.id });
 
   const onSave = async () => {
     await mutateAsync({ status });
+    setOpen(false);
   };
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button
           disabled={asset.status !== "PENDING_ADMIN_REVIEW"}
@@ -55,9 +57,9 @@ export default function EditStatusDialog({ asset }: { asset: Asset }) {
                 value={status}
                 onValueChange={(e) => setStatus(e as AssetStatus)}
               >
-                {Object.entries(ASSET_STATUSES).map(([a, b]) => (
-                  <DropdownMenuRadioItem key={a} value={b}>
-                    {b}
+                {ASSET_STATUSES.map((status) => (
+                  <DropdownMenuRadioItem key={status} value={status}>
+                    {status}
                   </DropdownMenuRadioItem>
                 ))}
               </DropdownMenuRadioGroup>

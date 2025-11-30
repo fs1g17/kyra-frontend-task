@@ -37,6 +37,15 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    
+    /* Custom surface colors */
+    --surface-dark: 270 5% 7%;        /* #111013 */
+    --surface-elevated: 0 0% 10%;     /* #1A1A1A */
+    --surface-active: 252 6% 22%;     /* #35343C */
+    --surface-input: 260 10% 12%;     /* #1B1A22 */
+    
+    /* Accent colors */
+    --accent-lime: 76 85% 60%;        /* #BAEF44 */
   }
 }
 

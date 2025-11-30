@@ -13,7 +13,7 @@ export default function AssetCard({ asset }: { asset: Asset }) {
         {/* <div>hello</div> */}
         <AssetStatusChip status={asset.status} />
         <AssetCardCreator
-          assetId={asset.id}
+          commentCount={asset.commentCount}
           creator={asset.creator}
           deliverable={asset.deliverable}
         />
