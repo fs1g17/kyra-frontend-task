@@ -18,10 +18,13 @@ export default function Messages({ assetId }: { assetId: number }) {
   console.log(data);
 
   return (
-    <div className="h-full p-4 flex flex-col gap-y-5">
-      {data.map((comment) => (
-        <Message comment={comment} />
-      ))}
+    <div className="flex flex-col h-full">
+      <div className="h-[calc(100vh-152px)] p-4 flex flex-col gap-y-5 overflow-y-scroll">
+        {data.map((comment) => (
+          <Message comment={comment} />
+        ))}
+      </div>
+      <MessageTextBox assetId={assetId} />
     </div>
   );
 }
