@@ -21,7 +21,6 @@ export default function AssetCardGroup({
   selectedStatus: AssetStatus | null;
   assets: Asset[];
 }) {
-  console.log({ assets });
   const group = assets.filter((asset) => asset.status === status);
 
   if (
