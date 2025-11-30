@@ -5,7 +5,6 @@ import { Asset, AssetTab } from "@/types/asset";
 import { cn } from "@/lib/utils";
 import Overview from "./overview";
 import Messages from "./messages";
-import MessageTextBox from "./message-text-box";
 
 export default function RightScreen({ asset }: { asset: Asset }) {
   const [tab, selectTab] = useState<AssetTab>(AssetTab.OVERVIEW);

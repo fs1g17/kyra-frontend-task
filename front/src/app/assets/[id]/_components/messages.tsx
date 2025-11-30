@@ -15,8 +15,6 @@ export default function Messages({ assetId }: { assetId: number }) {
     return <div>Error loading comments for asset with id: {assetId}</div>;
   }
 
-  console.log(data);
-
   return (
     <div className="flex flex-col h-full">
       <div className="h-[calc(100vh-152px)] p-4 flex flex-col gap-y-5 overflow-y-scroll">

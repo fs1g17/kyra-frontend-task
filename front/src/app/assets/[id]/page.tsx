@@ -24,7 +24,7 @@ export default function AssetPage({
 
   return (
     <div className="flex flex-col h-[100vh] bg-[#111013]">
-      <Navbar />
+      <Navbar asset={data} />
       <div className="flex gap-4 h-full">
         <div className="w-full md:w-2/3 p-2">
           <LeftScreen asset={data} />
