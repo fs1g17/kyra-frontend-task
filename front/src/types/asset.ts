@@ -40,6 +40,7 @@ export interface AssetDeliverable {
 export interface Asset {
   id: number;
   creator: AssetCreator;
+  commentCount: number;
   assetUrl: string;
   thumbnailUrl: string;
   caption: string;
