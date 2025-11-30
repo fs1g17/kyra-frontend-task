@@ -2,6 +2,7 @@
 
 import useGetComments from "../_hooks/useGetComments";
 import Message from "./message";
+import MessageTextBox from "./message-text-box";
 
 export default function Messages({ assetId }: { assetId: number }) {
   const { data, isPending, isError } = useGetComments({ assetId });

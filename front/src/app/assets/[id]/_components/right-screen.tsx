@@ -5,6 +5,7 @@ import { Asset, AssetTab } from "@/types/asset";
 import { cn } from "@/lib/utils";
 import Overview from "./overview";
 import Messages from "./messages";
+import MessageTextBox from "./message-text-box";
 
 export default function RightScreen({ asset }: { asset: Asset }) {
   const [tab, selectTab] = useState<AssetTab>(AssetTab.OVERVIEW);
@@ -22,6 +23,7 @@ export default function RightScreen({ asset }: { asset: Asset }) {
         )}
         {tab === AssetTab.MESSAGES && <Messages assetId={asset.id} />}
       </div>
+      <MessageTextBox />
     </div>
   );
 }
