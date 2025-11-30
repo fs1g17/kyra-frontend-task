@@ -4,21 +4,23 @@ import { useState } from "react";
 import { Asset, AssetTab } from "@/types/asset";
 import { cn } from "@/lib/utils";
 import Overview from "./overview";
+import Messages from "./messages";
 
 export default function RightScreen({ asset }: { asset: Asset }) {
   const [tab, selectTab] = useState<AssetTab>(AssetTab.OVERVIEW);
 
   return (
-    <div className="w-full flex-col h-full">
+    <div className="w-full flex flex-col h-full">
       <div className="w-full flex border-b border-gray-600 pl-2">
         {Object.values(AssetTab).map((value) => (
           <Tab value={value} selected={value === tab} selectValue={selectTab} />
         ))}
       </div>
-      <div className="w-full flex-grow">
+      <div className="w-full h-full">
         {tab === AssetTab.OVERVIEW && (
           <Overview deliverable={asset.deliverable} />
         )}
+        {tab === AssetTab.MESSAGES && <Messages assetId={asset.id} />}
       </div>
     </div>
   );
