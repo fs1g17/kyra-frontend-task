@@ -1,0 +1,40 @@
+import { Asset, AssetStatus } from "@/types/asset";
+import { useMemo } from "react";
+import AssetCard from "./asset-card";
+
+const assetStatusTitleMap: {
+  [key: string]: string;
+} = {
+  AWAITING_ASSET: "Awaiting asset",
+  PENDING_ADMIN_REVIEW: "Needs admin review",
+  BRAND_REVIEW: "In brand review",
+  REJECTED: "Rejected (awaiting edits)",
+  APPROVED: "Approved",
+};
+
+export default function AssetCardGroup({
+  status,
+  assets,
+}: {
+  status: AssetStatus;
+  assets: Asset[];
+}) {
+  const group = useMemo(() => {
+    return assets.filter((asset) => asset.status === status);
+  }, [status, assets]);
+
+  if (group.length === 0) {
+    return null;
+  }
+
+  return (
+    <div className="w-full">
+      <div className="font-bold text-lg">{assetStatusTitleMap[status]}</div>
+      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {group.map((asset) => (
+          <AssetCard asset={asset} />
+        ))}
+      </div>
+    </div>
+  );
+}

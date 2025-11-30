@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import StatusSelector from "./_components/status-selector";
-import { AssetStatus } from "@/types/asset";
+import { ASSET_STATUSES, AssetStatus } from "@/types/asset";
 import useGetAssets from "./_hooks/useGetAssets";
 import AssetCard from "./_components/asset-card";
+import AssetCardGroup from "./_components/asset-card-group";
 
 export default function Assets() {
   const [selectedStatus, setSelectedStatus] = useState<AssetStatus | null>(
@@ -22,13 +23,16 @@ export default function Assets() {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col gap-y-5">
       <h1 className="font-bold text-xl">#KyraChallenge</h1>
       <StatusSelector
         selectedStatus={selectedStatus}
         setSelectedStatus={setSelectedStatus}
       />
-      <AssetCard asset={data[0]} />
+
+      {ASSET_STATUSES.map((status) => (
+        <AssetCardGroup status={status} assets={data} />
+      ))}
     </div>
   );
 }
