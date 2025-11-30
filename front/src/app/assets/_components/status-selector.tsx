@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { AssetStatus, ASSET_STATUSES } from "@/types/asset-status";
+import { AssetStatus, ASSET_STATUSES } from "@/types/asset";
 
 export const AssetStatusMap: {
   [key: string]: { name: string; style: string };
