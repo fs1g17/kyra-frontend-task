@@ -1,11 +1,9 @@
 "use client";
 
-import useGetAsset from "./_hooks/useGetAsset";
 import Navbar from "./_components/navbar";
-import VideoCard from "./_components/video-card";
-import ThumbnailCard from "./_components/thumbnail-card";
-import SoundUsedInput from "./_components/sound-used-input";
-import CreatorsCaptionInput from "./_components/creators-caption-input";
+import useGetAsset from "./_hooks/useGetAsset";
+import LeftScreen from "./_components/left-screen";
+import RightScreen from "./_components/right-screen";
 
 export default function AssetPage({
   params,
@@ -29,17 +27,12 @@ export default function AssetPage({
       <Navbar />
       <div className="flex gap-4 h-full">
         <div className="w-full md:w-2/3 p-2">
-          <div className="flex flex-col gap-y-2.5">
-            <div className="flex gap-x-2.5 justify-center">
-              <VideoCard videoUrl={data.assetUrl} />
-              <ThumbnailCard thumbnailUrl={data.thumbnailUrl} />
-            </div>
-            <SoundUsedInput soundUrl={data.soundUrl} />
-            <CreatorsCaptionInput caption={data.caption} />
-          </div>
+          <LeftScreen asset={data} />
         </div>
 
-        <div className="hidden md:block md:w-1/3 md:border-l md:border-gray-600"></div>
+        <div className="hidden md:block md:w-1/3 md:border-l md:border-gray-600">
+          <RightScreen asset={data} />
+        </div>
       </div>
     </div>
   );

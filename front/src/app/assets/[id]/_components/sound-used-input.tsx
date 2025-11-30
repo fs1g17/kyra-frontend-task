@@ -1,7 +1,7 @@
+import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ExternalLink, LinkIcon } from "lucide-react";
-import Link from "next/link";
 
 export default function SoundUsedInput({ soundUrl }: { soundUrl: string }) {
   return (
