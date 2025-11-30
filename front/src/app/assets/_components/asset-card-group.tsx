@@ -14,16 +14,21 @@ const assetStatusTitleMap: {
 
 export default function AssetCardGroup({
   status,
+  selectedStatus,
   assets,
 }: {
   status: AssetStatus;
+  selectedStatus: AssetStatus | null;
   assets: Asset[];
 }) {
   const group = useMemo(() => {
     return assets.filter((asset) => asset.status === status);
   }, [status, assets]);
 
-  if (group.length === 0) {
+  if (
+    group.length === 0 ||
+    (selectedStatus !== null && selectedStatus !== status)
+  ) {
     return null;
   }
 

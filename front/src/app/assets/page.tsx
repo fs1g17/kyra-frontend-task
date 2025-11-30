@@ -31,7 +31,11 @@ export default function Assets() {
       />
 
       {ASSET_STATUSES.map((status) => (
-        <AssetCardGroup status={status} assets={data} />
+        <AssetCardGroup
+          status={status}
+          assets={data}
+          selectedStatus={selectedStatus}
+        />
       ))}
     </div>
   );
