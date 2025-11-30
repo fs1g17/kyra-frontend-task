@@ -21,9 +21,6 @@ export default function usePostComment({ assetId }: { assetId: number }) {
   return useMutation({
     mutationFn: ({ comment }: { comment: string }) =>
       postComment({ comment, assetId }),
-    onSuccess: () => {
-      toast.success("Comment posted");
-    },
     onError: () => {
       toast.error("Failed to post comment");
     },

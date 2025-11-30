@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import useGetComments from "../_hooks/useGetComments";
 import Message from "./message";
 import MessageTextBox from "./message-text-box";
@@ -7,6 +8,11 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Messages({ assetId }: { assetId: number }) {
   const { data, isPending, isError } = useGetComments({ assetId });
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [data]);
 
   if (isPending) {
     return (
@@ -32,6 +38,7 @@ export default function Messages({ assetId }: { assetId: number }) {
         {data.map((comment) => (
           <Message key={comment.id} comment={comment} />
         ))}
+        <div ref={messagesEndRef} />
       </div>
       <MessageTextBox assetId={assetId} />
     </div>
