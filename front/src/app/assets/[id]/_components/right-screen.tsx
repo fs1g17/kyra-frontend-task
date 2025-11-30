@@ -23,7 +23,7 @@ export default function RightScreen({ asset }: { asset: Asset }) {
         )}
         {tab === AssetTab.MESSAGES && <Messages assetId={asset.id} />}
       </div>
-      <MessageTextBox />
+      <MessageTextBox assetId={asset.id} />
     </div>
   );
 }
