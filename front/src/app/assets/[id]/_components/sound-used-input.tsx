@@ -6,7 +6,9 @@ import { ExternalLink, LinkIcon } from "lucide-react";
 export default function SoundUsedInput({ soundUrl }: { soundUrl: string }) {
   return (
     <div className="flex flex-col gap-y-1">
-      <Label htmlFor="sound">Sound Used</Label>
+      <Label htmlFor="sound" className="text-muted-foreground">
+        Sound Used
+      </Label>
       <div className="flex w-full relative">
         <LinkIcon
           className="w-4 h-4 absolute left-2 top-2.5"
@@ -15,7 +17,7 @@ export default function SoundUsedInput({ soundUrl }: { soundUrl: string }) {
         <Input
           id="sound"
           value={soundUrl}
-          className="pl-7 bg-[#1B1A22]"
+          className="pl-7 bg-[#1B1A22] border-none"
           readOnly
         />
         <Link
