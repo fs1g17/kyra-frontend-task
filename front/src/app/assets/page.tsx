@@ -4,15 +4,22 @@ import { useState } from "react";
 import StatusSelector from "./_components/status-selector";
 import { AssetStatus } from "@/types/asset";
 import useGetAssets from "./_hooks/useGetAssets";
+import AssetCard from "./_components/asset-card";
 
 export default function Assets() {
   const [selectedStatus, setSelectedStatus] = useState<AssetStatus | null>(
     null
   );
 
-  const { data } = useGetAssets();
+  const { data, isPending, isError } = useGetAssets();
 
-  console.log(data);
+  if (isPending) {
+    return <div>Loading...</div>;
+  }
+
+  if (!data || isError) {
+    return <div>Failed to get data</div>;
+  }
 
   return (
     <div className="flex flex-col">
@@ -21,6 +28,7 @@ export default function Assets() {
         selectedStatus={selectedStatus}
         setSelectedStatus={setSelectedStatus}
       />
+      <AssetCard asset={data[0]} />
     </div>
   );
 }

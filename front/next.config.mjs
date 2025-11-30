@@ -11,6 +11,14 @@ const nextConfig = {
       ],
     };
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "kyra-images.kyra.com",
+      },
+    ],
+  },
 };
 
 export default nextConfig;
