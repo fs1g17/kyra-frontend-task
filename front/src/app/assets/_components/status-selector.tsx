@@ -26,44 +26,58 @@ export const AssetStatusMap: {
   },
 };
 
-export default function StatusSelector() {
+export default function StatusSelector({
+  selectedStatus,
+  setSelectedStatus,
+}: {
+  selectedStatus: AssetStatus | null;
+  setSelectedStatus: (status: AssetStatus | null) => void;
+}) {
   return (
     <div className="w-full flex overflow-x-auto bg-[#1A1A1A] rounded-md p-1">
-      <div
-        className={cn(
-          "flex gap-x-2.5 p-2 items-center shrink-0 rounded-md",
-          true ? "bg-[#35343C]" : "bg-[#1A1A1A]"
-        )}
-      >
-        All
-        <div>{0}</div>
-      </div>
+      <StatusButton
+        amount={0}
+        selected={selectedStatus === null}
+        name="All"
+        onSelect={() => setSelectedStatus(null)}
+      />
 
       {ASSET_STATUSES.map((status) => (
-        <StatusButton status={status} amount={0} selected={false} />
+        <StatusButton
+          amount={0}
+          selected={selectedStatus === status}
+          name={AssetStatusMap[status].name}
+          highlight={AssetStatusMap[status].style}
+          onSelect={() => setSelectedStatus(status)}
+        />
       ))}
     </div>
   );
 }
 
 function StatusButton({
-  status,
   amount,
   selected,
+  name,
+  highlight,
+  onSelect,
 }: {
-  status: AssetStatus;
   amount: number;
   selected: boolean;
+  name: string;
+  highlight?: string;
+  onSelect: () => void;
 }) {
   return (
     <div
       className={cn(
-        "flex gap-x-2.5 px-2 py-1 items-center shrink-0 rounded-md",
+        "flex gap-x-2.5 px-2 py-1 items-center shrink-0 rounded-md hover:cursor-pointer",
         selected ? "bg-[#35343C]" : "bg-[#1A1A1A]"
       )}
+      onClick={onSelect}
     >
-      <div className={cn("w-3 h-3", AssetStatusMap[status].style)} />
-      {AssetStatusMap[status].name}
+      {highlight && <div className={cn("w-3 h-3", highlight)} />}
+      {name}
       <div>{amount}</div>
     </div>
   );
