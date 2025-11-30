@@ -1,3 +1,8 @@
+export enum AssetTab {
+  OVERVIEW = "Overview",
+  MESSAGES = "Messages",
+}
+
 export type AssetStatus =
   | "AWAITING_ASSET"
   | "PENDING_ADMIN_REVIEW"
