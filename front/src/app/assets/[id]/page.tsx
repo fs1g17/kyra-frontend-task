@@ -22,8 +22,13 @@ export default function AssetPage({
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col h-[100vh] bg-[#111013]">
       <Navbar />
+      <div className="flex gap-4 h-full">
+        <div className="w-full md:w-2/3"></div>
+
+        <div className="hidden md:block md:w-1/3 md:border-l md:border-gray-600"></div>
+      </div>
     </div>
   );
 }
