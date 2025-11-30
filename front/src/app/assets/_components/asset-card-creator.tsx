@@ -1,11 +1,14 @@
 import { AssetCreator, AssetDeliverable } from "@/types/asset";
-import { GitBranchIcon } from "lucide-react";
+import { GitBranchIcon, MessageSquare } from "lucide-react";
 import Image from "next/image";
+import AssetCardCommentCounter from "./asset-card-comment-counter";
 
 export default function AssetCardCreator({
+  assetId,
   creator,
   deliverable,
 }: {
+  assetId: number;
   creator: AssetCreator;
   deliverable: AssetDeliverable;
 }) {
@@ -25,6 +28,7 @@ export default function AssetCardCreator({
         <GitBranchIcon className="w-4 h-4 text-white" />
         <div>{deliverable.title}</div>
       </div>
+      <AssetCardCommentCounter assetId={assetId} />
     </div>
   );
 }
