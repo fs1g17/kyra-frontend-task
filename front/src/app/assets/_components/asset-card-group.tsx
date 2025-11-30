@@ -21,9 +21,8 @@ export default function AssetCardGroup({
   selectedStatus: AssetStatus | null;
   assets: Asset[];
 }) {
-  const group = useMemo(() => {
-    return assets.filter((asset) => asset.status === status);
-  }, [status, assets]);
+  console.log({ assets });
+  const group = assets.filter((asset) => asset.status === status);
 
   if (
     group.length === 0 ||

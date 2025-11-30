@@ -10,7 +10,7 @@ async function getAsset({ id }: { id: string }): Promise<Asset | undefined> {
 
 export default function useGetAsset({ id }: { id: string }) {
   return useQuery({
-    queryKey: ["assets"],
+    queryKey: ["assets", { id }],
     queryFn: () => getAsset({ id }),
   });
 }
