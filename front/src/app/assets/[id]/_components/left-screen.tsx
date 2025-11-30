@@ -3,10 +3,15 @@ import VideoCard from "./video-card";
 import ThumbnailCard from "./thumbnail-card";
 import SoundUsedInput from "./sound-used-input";
 import CreatorsCaptionInput from "./creators-caption-input";
+import { Button } from "@/components/ui/button";
+import EditStatusDialog from "./edit-status-dialog";
 
 export default function LeftScreen({ asset }: { asset: Asset }) {
   return (
     <div className="flex flex-col gap-y-2.5">
+      <div className="w-full flex justify-end">
+        <EditStatusDialog asset={asset} />
+      </div>
       <div className="flex gap-x-2.5 justify-center">
         <VideoCard videoUrl={asset.assetUrl} />
         <ThumbnailCard thumbnailUrl={asset.thumbnailUrl} />

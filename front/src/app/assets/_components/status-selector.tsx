@@ -12,7 +12,7 @@ export const AssetStatusMap: {
     name: "Needs admin review",
     style: "bg-[#BA842E]",
   },
-  BRAND_REVIEW: {
+  PENDING_BRAND_REVIEW: {
     name: "In brand review",
     style: "bg-[#9A82B0]",
   },

@@ -7,7 +7,7 @@ const assetStatusTitleMap: {
 } = {
   AWAITING_ASSET: "Awaiting asset",
   PENDING_ADMIN_REVIEW: "Needs admin review",
-  BRAND_REVIEW: "In brand review",
+  PENDING_BRAND_REVIEW: "In brand review",
   REJECTED: "Rejected (awaiting edits)",
   APPROVED: "Approved",
 };
