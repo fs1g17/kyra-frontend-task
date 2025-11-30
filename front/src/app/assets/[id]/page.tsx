@@ -7,6 +7,7 @@ import ThumbnailCard from "./_components/thumbnail-card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import SoundUsedInput from "./_components/sound-used-input";
+import CreatorsCaptionInput from "./_components/creators-caption-input";
 
 export default function AssetPage({
   params,
@@ -36,6 +37,7 @@ export default function AssetPage({
               <ThumbnailCard thumbnailUrl={data.thumbnailUrl} />
             </div>
             <SoundUsedInput soundUrl={data.soundUrl} />
+            <CreatorsCaptionInput caption={data.caption} />
           </div>
         </div>
 
