@@ -3,6 +3,8 @@
 import { useMemo } from "react";
 import useGetAsset from "./_hooks/useGetAsset";
 import Navbar from "./_components/navbar";
+import VideoCard from "./_components/video-card";
+import ThumbnailCard from "./_components/thumbnail-card";
 
 export default function AssetPage({
   params,
@@ -25,7 +27,14 @@ export default function AssetPage({
     <div className="flex flex-col h-[100vh] bg-[#111013]">
       <Navbar />
       <div className="flex gap-4 h-full">
-        <div className="w-full md:w-2/3"></div>
+        <div className="w-full md:w-2/3">
+          <div className="flex flex-col">
+            <div className="flex gap-x-2.5">
+              <VideoCard videoUrl={data.assetUrl} />
+              <ThumbnailCard thumbnailUrl={data.thumbnailUrl} />
+            </div>
+          </div>
+        </div>
 
         <div className="hidden md:block md:w-1/3 md:border-l md:border-gray-600"></div>
       </div>
