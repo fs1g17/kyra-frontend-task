@@ -15,11 +15,11 @@ export default function Overview({
       <div className="w-full flex justify-between">
         <div className="flex flex-col gap-y-1">
           <div className="text-muted-foreground">Fee</div>
-          <div>{deliverable.fees}</div>
+          <div>{deliverable.fees ?? "--"}</div>
         </div>
         <div className="flex flex-col gap-y-1">
           <div className="text-muted-foreground">Deadline</div>
-          <div>{deliverable.deadline}</div>
+          <div>{deliverable.deadline ?? "--"}</div>
         </div>
       </div>
       <div className="flex flex-col gap-y-1">
